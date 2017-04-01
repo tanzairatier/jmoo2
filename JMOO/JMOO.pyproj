@@ -23,7 +23,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Individual.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="jmoo.py" />
+    <Compile Include="Perturbation\Mutation.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Population\Random_Population.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Population\test_populators.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Population\__init__.py" />
     <Compile Include="Problem.py">
       <SubType>Code</SubType>
     </Compile>
@@ -33,10 +46,14 @@
     <Compile Include="Objective.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Problems\__init__.py">
+    <Compile Include="Problems\Schaffer.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Problems\Schaffer.py">
+    <Compile Include="Problems\test_problems.py" />
+    <Compile Include="Problems\__init__.py" />
+    <Compile Include="Selection\Random_Selection.py" />
+    <Compile Include="Selection\test_selectors.py" />
+    <Compile Include="Selection\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="test_jmoo_parameter_settings.py">
@@ -50,7 +67,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Perturbation\" />
+    <Folder Include="Population\" />
     <Folder Include="Problems\" />
+    <Folder Include="Selection\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

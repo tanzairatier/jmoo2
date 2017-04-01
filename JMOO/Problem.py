@@ -5,12 +5,12 @@ class Problem:
     def generate_input(self):
         return [random.uniform(decision.lower_bound, decision.upper_bound) for decision in self.decisions]
     
-    def initialize(self, decisions, input = None):
+    def initialize(self, decision_variables, input = None):
         """used before the evaluate function of every problem
         inserts inputs to evaluate inside the decision objects for the probem"""
         if input:
-            for i,decision in enumerate(decisions):
-                decision.value = input[i]
+            for i,decision_variable in enumerate(decision_variables):
+                decision_variable.value = input[i]
 
     def objective_values_as_list(self, objectives):
         """used at the end of the evaluate function of every problem

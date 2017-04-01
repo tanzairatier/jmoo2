@@ -1,5 +1,8 @@
 
+import random
 
+
+random.seed(1)
 from Problems import Schaffer
 
 prob = Schaffer.Schaffer()
@@ -18,3 +21,7 @@ J.population_size = 150
 
 print(J.population_size)
 
+from Selection import Random_Selection
+downselector = Random_Selection.Random_Selector(5, X)
+X = downselector.select()
+for x in X: print(x)
