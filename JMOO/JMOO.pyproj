@@ -23,6 +23,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\Random_Evolution.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Algorithms\__init__.py" />
+    <Compile Include="Friendly_Errors.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Individual.py">
       <SubType>Code</SubType>
     </Compile>
@@ -30,6 +37,8 @@
     <Compile Include="Perturbation\Mutation.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Perturbation\test_mutators.py" />
+    <Compile Include="Perturbation\__init__.py" />
     <Compile Include="Population\Random_Population.py">
       <SubType>Code</SubType>
     </Compile>
@@ -46,20 +55,52 @@
     <Compile Include="Objective.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Problems\Constrex.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Problems\Fonseca.py" />
     <Compile Include="Problems\Schaffer.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Problems\test_problems.py" />
     <Compile Include="Problems\__init__.py" />
+    <Compile Include="Reproduction\Crossover.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reproduction\test_crossovers.py" />
+    <Compile Include="Reproduction\__init__.py" />
     <Compile Include="Selection\Random_Selection.py" />
     <Compile Include="Selection\test_selectors.py" />
+    <Compile Include="Selection\Tournament.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Selection\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Stats\Evaluations.py" />
+    <Compile Include="Stats\Mean.py" />
+    <Compile Include="Stats\Median.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Stats\test_stats.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Stats\__init__.py" />
+    <Compile Include="StatTracker.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StoppingCriteria\Criteria.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StoppingCriteria\__init__.py" />
+    <Compile Include="test_individual.py" />
     <Compile Include="test_jmoo_parameter_settings.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="test_schaffer.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="utility_functions.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Variable.py">
@@ -67,6 +108,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Algorithms\" />
+    <Folder Include="Stats\" />
+    <Folder Include="StoppingCriteria\" />
+    <Folder Include="Reproduction\" />
     <Folder Include="Perturbation\" />
     <Folder Include="Population\" />
     <Folder Include="Problems\" />

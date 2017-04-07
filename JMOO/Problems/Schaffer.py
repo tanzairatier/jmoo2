@@ -1,11 +1,21 @@
 from Problem import Problem
 from Decision import DecisionVariable
 from Objective import Objective
+from Friendly_Errors import ImproperInputError
 
 class Schaffer(Problem):
-    def __init__(self, a = 10):
+    """Schaffer problem N1.
+    J. D. Schaffer, “Some experiments in machine learning using vector evaluated genetic algorithms (artificial intelligence, optimization, adaptation, pattern recognition),” Ph.D. dissertation, Vanderbilt University, 1984.
+    """
+
+    def __init__(self, boundary = 10):
         """constructor"""
-        self.decision_variables = [DecisionVariable(-a, a, "x1")]
+        Problem.__init__(self)
+
+        if not isinstance(boundary, int) and not isinstance(boundary, float):
+            raise ImproperInputError()
+
+        self.decision_variables = [DecisionVariable(-boundary, boundary, "x1")]
         self.objectives = [Objective("y1", less_is_more=True),
                            Objective("y2", less_is_more=True)]
 
@@ -18,3 +28,6 @@ class Schaffer(Problem):
         self.objectives[1].value = (x1-2)**2
         
         return Problem.objective_values_as_list(self, self.objectives)
+
+    def evaluate_constraints(self, input = None):
+        pass

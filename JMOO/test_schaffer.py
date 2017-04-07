@@ -1,27 +1,20 @@
 
 import random
-
+from Problems.Schaffer import Schaffer
+from Problems.Constrex import Constrex
+from Problems.Fonseca import Fonseca
+from StatTracker import StatTracker
+from Stats.Median import Median
+from Stats.Mean import Mean
+from Stats.Evaluations import Evaluations
 
 random.seed(1)
-from Problems import Schaffer
 
-prob = Schaffer.Schaffer()
-X = [prob.generate_input() for i in range(10)]
-Y = [prob.evaluate(x) for x in X]
-for x,y in zip(X, Y):
-    print(x, "->", y)
+
+
+from Algorithms.Random_Evolution import Random_Evolution
+
+
+
+Random_Evolution(None, Fonseca(), StatTracker([Median, Mean, Evaluations])).evolve()
     
-
-
-
-from jmoo import jmoo
-
-J = jmoo()
-J.population_size = 150
-
-print(J.population_size)
-
-from Selection import Random_Selection
-downselector = Random_Selection.Random_Selector(5, X)
-X = downselector.select()
-for x in X: print(x)
