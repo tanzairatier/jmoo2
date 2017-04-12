@@ -7,6 +7,7 @@ class Mean:
     """collects the mean on each objective of a population"""
     
     STAT_NAME = "Mean"
+    FORMATTER = "%10.3f"
 
     def __init__(self, population):
         self._population = population

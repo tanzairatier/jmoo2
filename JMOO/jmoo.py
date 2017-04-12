@@ -1,3 +1,14 @@
+from Problem import Problem
+from Algorithm import Algorithm
+from Problems.Schaffer import Schaffer
+from Problems.Constrex import Constrex
+from Problems.Fonseca import Fonseca
+from StatTracker import StatTracker
+from Stats.Median import Median
+from Stats.Mean import Mean
+from Stats.Evaluations import Evaluations
+from Friendly_Errors import DecisionOutOfBoundsError, NullInputError, ImproperInputError
+
 class jmoo(object):
     DEFAULT_POPULATION_SIZE = 100
     DEFAULT_GENERATION_LIMIT = 20
@@ -9,6 +20,44 @@ class jmoo(object):
         self._generation_limit = jmoo.DEFAULT_GENERATION_LIMIT
         self._number_of_repeats = jmoo.DEFAULT_NUMBER_OF_REPEATS
         self._random_seed = jmoo.DEFAULT_RANDOM_SEED
+        self._algorithms = []
+        self._problems = []
+
+    def set_algorithms(self, algorithms):
+        """ Establishes a set of algorithms to be run by the jmoo module.
+        *algorithms* can either be list or scalar.  They must also be references to a *Algorithm* class or subclass, or they can be instances.
+        """
+        try:
+            if isinstance(algorithms, list):
+                for algorithm in algorithms:
+                    if isinstance(algorithm, Algorithm):
+                        self._algorithms.append(algorithm)
+                    if issubclass(algorithm, Algorithm):
+                        self._algorithms.append(algorithm())
+            else:
+                if issubclass(algorithms, Algorithm):
+                    self._algorithms = [algorithms]
+        except:
+            raise ImproperInputError("Parameter *algorithms* from method *jmoo.set_algorithms* can only take instances of *Algorithm* (or its subclasses) or references to classes (or subclasses) of *Algorithm*.")
+
+    def set_problems(self, problems):
+        try:
+            if isinstance(problems, list):
+                for problem in problems:
+                    if isinstance(problem, Problem):
+                        self._problems.append(problem)
+                    elif issubclass(problem, Problem):
+                        self._problems.append(problem())
+            else:
+                if issubclass(problems, Problem):
+                    self._problems = [problems]
+        except:
+            raise ImproperInputError("Parameter *problems* from method *jmoo.set_problems* can only take instances of *Problem*  (or its subclasses) or classes (or subclasses) of *Problem*.")
+
+    def run(self):
+        for problem in self._problems:
+            for algorithm in self._algorithms:
+                algorithm(problem, StatTracker([Median, Mean, Evaluations])).evolve()
 
     """ Population Size: the number of candidate solutions within each population."""
     @property

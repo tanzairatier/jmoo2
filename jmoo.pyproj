@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{01fe2840-bd5b-4286-b913-dc0ad87402bb}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>jmoo\test_schaffer.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <InterpreterVersion />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="jmoo\Algorithm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="jmoo\Algorithms\Random_Evolution.py" />
+    <Compile Include="jmoo\Algorithms\__init__.py" />
+    <Compile Include="jmoo\Decision.py" />
+    <Compile Include="jmoo\Friendly_Errors.py" />
+    <Compile Include="jmoo\Individual.py" />
+    <Compile Include="jmoo\jmoo.py" />
+    <Compile Include="jmoo\Objective.py" />
+    <Compile Include="jmoo\Perturbation\Mutation.py" />
+    <Compile Include="jmoo\tests\test_mutators.py" />
+    <Compile Include="jmoo\Perturbation\__init__.py" />
+    <Compile Include="jmoo\Population\Random_Population.py" />
+    <Compile Include="jmoo\tests\test_populators.py" />
+    <Compile Include="jmoo\Population\__init__.py" />
+    <Compile Include="jmoo\Problem.py" />
+    <Compile Include="jmoo\Problems\Constrex.py" />
+    <Compile Include="jmoo\Problems\Fonseca.py" />
+    <Compile Include="jmoo\Problems\Schaffer.py" />
+    <Compile Include="jmoo\tests\test_problems.py" />
+    <Compile Include="jmoo\Problems\__init__.py" />
+    <Compile Include="jmoo\Reproduction\Crossover.py" />
+    <Compile Include="jmoo\tests\test_crossovers.py" />
+    <Compile Include="jmoo\Reproduction\__init__.py" />
+    <Compile Include="jmoo\Selection\Random_Selection.py" />
+    <Compile Include="jmoo\Selection\Strength.py" />
+    <Compile Include="jmoo\tests\test_selectors.py" />
+    <Compile Include="jmoo\Selection\Tournament.py" />
+    <Compile Include="jmoo\Selection\__init__.py" />
+    <Compile Include="jmoo\Stats\Diversity.py" />
+    <Compile Include="jmoo\Stats\Evaluations.py" />
+    <Compile Include="jmoo\Stats\Mean.py" />
+    <Compile Include="jmoo\Stats\Median.py" />
+    <Compile Include="jmoo\tests\test_stats.py" />
+    <Compile Include="jmoo\Stats\__init__.py" />
+    <Compile Include="jmoo\StatTracker.py" />
+    <Compile Include="jmoo\StoppingCriteria\Criteria.py" />
+    <Compile Include="jmoo\tests\test_criteria.py" />
+    <Compile Include="jmoo\StoppingCriteria\__init__.py" />
+    <Compile Include="jmoo\tests\context.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="jmoo\tests\test_individual.py" />
+    <Compile Include="jmoo\tests\test_jmoo_parameter_settings.py" />
+    <Compile Include="jmoo\tests\__init__.py" />
+    <Compile Include="jmoo\test_schaffer.py" />
+    <Compile Include="jmoo\utility_functions.py" />
+    <Compile Include="jmoo\Variable.py" />
+    <Compile Include="jmoo\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="jmoo\" />
+    <Folder Include="jmoo\Algorithms\" />
+    <Folder Include="jmoo\docs\" />
+    <Folder Include="jmoo\tests\" />
+    <Folder Include="jmoo\Perturbation\" />
+    <Folder Include="jmoo\Population\" />
+    <Folder Include="jmoo\Problems\" />
+    <Folder Include="jmoo\Reproduction\" />
+    <Folder Include="jmoo\Selection\" />
+    <Folder Include="jmoo\Stats\" />
+    <Folder Include="jmoo\StoppingCriteria\" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>

@@ -4,14 +4,14 @@ from Selection.Tournament import Tournament
 from Perturbation.Mutation import Mutator
 from Reproduction.Crossover import Crossover 
 from Stats.Median import Median
-from StoppingCriteria.Criteria import MaxGenerationsCriteria 
+from StoppingCriteria.Criteria import MaxGenerationsCriteria, MaxEvaluationsCriteria
+from Algorithm import Algorithm
 
-class Random_Evolution:
-    def __init__(self, jmoo_settings, problem, stat_tracker):
-        self._jmoo_settings = jmoo_settings
+class Random_Evolution(Algorithm):
+    def __init__(self, problem, stat_tracker):
         self._problem = problem
         self._stat_tracker = stat_tracker
-        self._stopping_criteria = MaxGenerationsCriteria(20)
+        self._stopping_criteria = MaxEvaluationsCriteria(2000)
 
     def evolve(self):
 
@@ -22,7 +22,6 @@ class Random_Evolution:
         while not self._stopping_criteria.is_satisfied(self._stat_tracker):
             population = Crossover(self._problem, population, 0.80).crossover()
             population = Mutator(0.08).mutate(population)
-            #population = Random_Selector(100, population).select()
             population = Tournament(4, 100, population).select()
             self._stat_tracker.collect_stats(population, self._problem)
 

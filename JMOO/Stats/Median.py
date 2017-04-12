@@ -7,6 +7,7 @@ class Median:
     """collects the median on each objective of a population"""
     
     STAT_NAME = "Median"
+    FORMATTER = "%10.3f"
 
     def __init__(self, population):
         self._population = population

@@ -52,7 +52,6 @@ class Individual:
         return self._fitness
 
     """ Weighted Fitness: objective score evaluations with -1 or +1 weights to control which is better."""
-
     @property
     def weighted_fitness(self):
         return self._weighted_fitness
