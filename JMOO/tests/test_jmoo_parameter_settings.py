@@ -1,43 +1,53 @@
-from .context import *
+# -*- coding: utf-8 -*-
+
+"""Tests for the Jmoo Core module."""
+
 import unittest
 import random
-from jmoo.jmoo import jmoo
+from core import Jmoo
 
 class TestParameterSettings(unittest.TestCase):
+    """Tests for parameter settings to the Jmoo Core module."""
+
     def setUp(self):
         """Setup a JMOO Object"""
-        self.J = jmoo()
+        self.jmoo_runner = Jmoo()
 
     def tearDown(self):
         pass
-        
-    def test_population_size_is_set_correctly(self):
-        """If we set the population size, make sure it is set correctly.  If not, ensure it was set to the default."""
-        self.assertEqual(self.J.population_size, jmoo.DEFAULT_POPULATION_SIZE)      
-        pop_size = random.uniform(10,1000)
-        self.J.population_size = pop_size
-        self.assertEquals(pop_size, self.J.population_size)
 
-    def test_generation_limit_is_set_correctly(self):
-        """If we set the generation limit, it is set correctly.  If not, ensure it was set to the default."""
-        self.assertEqual(self.J.generation_limit, jmoo.DEFAULT_GENERATION_LIMIT)
-        gen_lim = random.uniform(10,1000)
-        self.J.generation_limit = gen_lim
-        self.assertEquals(gen_lim, self.J.generation_limit)
+    def test_pop_size_is_set_correctly(self):
+        """If we set the population size, make sure it is set correctly.
+        If not, ensure it was set to the default."""
 
-    def test_number_of_repeats_is_set_correctly(self):
-        """If we set the number of repeats, it is set correctly.  If not, ensure it was set to the default."""
-        self.assertEqual(self.J.number_of_repeats, jmoo.DEFAULT_NUMBER_OF_REPEATS)
-        num_reps = random.uniform(10,1000)
-        self.J.number_of_repeats = num_reps
-        self.assertEquals(num_reps, self.J.number_of_repeats)
+        self.assertEqual(self.jmoo_runner.population_size, Jmoo.DEFAULT_POPULATION_SIZE)
+        pop_size = random.uniform(10, 1000)
+        self.jmoo_runner.population_size = pop_size
+        self.assertEqual(pop_size, self.jmoo_runner.population_size)
 
-    def test_random_seed_is_set_correctly(self):
-        """If we set the random seed, it is set correctly.  If not, ensure it was set to the default."""
-        self.assertEqual(self.J.random_seed, jmoo.DEFAULT_RANDOM_SEED)
-        ran_seed = random.uniform(10,1000)
-        self.J.random_seed = ran_seed
-        self.assertEquals(ran_seed, self.J.random_seed)
+    def test_gen_lim_is_set_correctly(self):
+        """If we set the generation limit, it is set correctly.
+        If not, ensure it was set to the default."""
+        self.assertEqual(self.jmoo_runner.generation_limit, Jmoo.DEFAULT_GENERATION_LIMIT)
+        gen_lim = random.uniform(10, 1000)
+        self.jmoo_runner.generation_limit = gen_lim
+        self.assertEqual(gen_lim, self.jmoo_runner.generation_limit)
+
+    def test_num_repeats_set_correctly(self):
+        """If we set the number of repeats, it is set correctly.
+        If not, ensure it was set to the default."""
+        self.assertEqual(self.jmoo_runner.number_of_repeats, Jmoo.DEFAULT_NUMBER_OF_REPEATS)
+        num_reps = random.uniform(10, 1000)
+        self.jmoo_runner.number_of_repeats = num_reps
+        self.assertEqual(num_reps, self.jmoo_runner.number_of_repeats)
+
+    def test_rand_seed_is_set_correctly(self):
+        """If we set the random seed, it is set correctly.
+        If not, ensure it was set to the default."""
+        self.assertEqual(self.jmoo_runner.random_seed, Jmoo.DEFAULT_RANDOM_SEED)
+        ran_seed = random.uniform(10, 1000)
+        self.jmoo_runner.random_seed = ran_seed
+        self.assertEqual(ran_seed, self.jmoo_runner.random_seed)
 
 if __name__ == '__main__':
     unittest.main()

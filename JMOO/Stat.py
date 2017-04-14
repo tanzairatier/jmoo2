@@ -13,10 +13,10 @@
 #    You should have received a copy of the GNU Lesser General Public License
 #    along with JMOO.  If not, see < http: // www.gnu.org / licenses / >.
 
-"""Base class for defining Algorithms.  This module is a stub for holding common
+"""Base class for defining Stats.  This module is a stub for holding common
 methods that can be called from instances of its subclasses."""
 
-class Algorithm:
-    """Base class for defining Algorithms for search problems."""
+class Stat:
+    """Base class for defining Stats for search problems."""
     def __init__(self):
         pass

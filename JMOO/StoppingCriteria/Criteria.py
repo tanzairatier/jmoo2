@@ -1,4 +1,4 @@
-from Friendly_Errors import ImproperInputError
+from FriendlyErrors import ImproperInputError, InvalidSetupError
 
 class MaxGenerationsCriteria:
     """A stopping criteria that claims convergence after a maximum number of generations have been achieved."""
@@ -31,10 +31,16 @@ class MaxEvaluationsCriteria:
             raise ImproperInputError("Parameter *max_evaluations* must be an integer greater than zero.")
         if max_evaluations < 1:
             raise ImproperInputError("Parameter *max_evaluations* for MaxEvaluationsCriteria must be greater than zero.")
+
         self._max_evaluations = max_evaluations
 
     def is_satisfied(self, stat_tracker):
-        if stat_tracker.get_latest_stat("Evaluations") >= self._max_evaluations:
+        try:
+            number_of_evaluations = stat_tracker.get_latest_stat("Evaluations")
+        except:
+            raise InvalidSetupError("Tried to use MaxEvaluationsCriteria without collecting an Evaluations stat.")
+
+        if number_of_evaluations >= self._max_evaluations:
             return True
         else:
             return False

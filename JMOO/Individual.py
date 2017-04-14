@@ -21,6 +21,19 @@ class Individual:
     def get_decision_values(self):
         return [decision.value for decision in self._decisions]
 
+    def dominates(self, other):
+        """self dominates other if self is not worse on any objective than other and better on at least one"""
+        better_than = False
+        for me,him in zip(self._weighted_fitness, other.weighted_fitness):
+            if me > him:
+                better_than = True
+            elif me < him:
+                return False
+        return better_than
+
+    def __eq__(self, other):
+        return self.fitness == other.fitness
+
     def __str__(self):
         return "[" + ",".join([str(decision) for decision in self._decisions]) + "]"
 

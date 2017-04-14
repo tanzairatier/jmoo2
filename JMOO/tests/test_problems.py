@@ -27,14 +27,14 @@ class TestProblems(unittest.TestCase):
         self.assertRaises(ImproperInputError, prob.evaluate, input = [first_var_upper_bound for i in range(num_variables+1)])
 
     def test_schaffer(self):
-        """Ensure that then Schaffer problem is working properly"""
+        """Ensure that the Schaffer problem is working properly"""
         self.assertEquals(abs(Schaffer(boundary=2).decision_variables[0].lower_bound), Schaffer(boundary=2).decision_variables[0].upper_bound, 2)
         self.assertEquals(Schaffer().evaluate(input = [7]), [49,25])
         self._try_common_error_cases(Schaffer)
         self.assertRaises(ImproperInputError, Schaffer().__init__, boundary = 'a')
            
     def test_fonseca(self):
-        """Ensure that then Schaffer problem is working properly"""
+        """Ensure that the Schaffer problem is working properly"""
         self.assertEquals(Fonseca().evaluate(input = [1,1]), [0.15766111987646092, 0.9970572981549862])
         self.assertEquals(len(Fonseca(num_variables=5).decision_variables), 5)
         self.assertEquals(abs(Fonseca(boundary=2).decision_variables[0].lower_bound), Fonseca(boundary=2).decision_variables[0].upper_bound, 2)
@@ -45,7 +45,7 @@ class TestProblems(unittest.TestCase):
         self.assertRaises(ImproperInputError, Fonseca().__init__, num_variables = 'a')
 
     def test_constrex(self):
-        """Ensure that then Constrex problem is working properly"""
+        """Ensure that the Constrex problem is working properly"""
         self.assertEquals(Constrex().evaluate(input = [1,5]), [1,6])
         self.assertGreaterEqual(Constrex().decision_variables[0].lower_bound, 0.1)
         self.assertGreaterEqual(Constrex().decision_variables[1].lower_bound, 0)

@@ -2,12 +2,13 @@ from math import exp, sqrt
 from Problem import Problem
 from Decision import DecisionVariable
 from Objective import Objective
-from Friendly_Errors import ImproperInputError
+from FriendlyErrors import ImproperInputError
 
 class Constrex(Problem):
     """Constr-Ex problem by Deb.
     Deb, Kalyanmoy (2002) Multiobjective optimization using evolutionary algorithms (Repr. ed.). Chichester [u.a.]: Wiley. ISBN 0-471-87339-X.
     """
+    NAME = "Constrex"
 
     def __init__(self):
         """constructor"""
@@ -19,17 +20,17 @@ class Constrex(Problem):
 
     def evaluate(self, input = None):
         """evaluates fitness scores for this problem"""
-        Problem.initialize(self, self.decision_variables, input)
+        Problem.initialize(self, input)
 
         X = [decision_variable.value for decision_variable in self.decision_variables]
         self.objectives[0].value = X[0]
         self.objectives[1].value = (1+X[1])/X[0]
         
-        return Problem.objective_values_as_list(self, self.objectives)
+        return Problem.objective_values_as_list(self)
 
     def evaluate_constraints(self, input = None):
         """Evaluates the constraints, returning true if input is legal."""
-        Problem.initialize(self, self.decision_variables, input)
+        Problem.initialize(self, input)
         X = [decision_variable.value for decision_variable in self.decision_variables]
 
         return X[1] + 9*X[0] >= 6 and \
