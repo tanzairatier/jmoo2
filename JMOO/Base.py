@@ -13,13 +13,39 @@
 #    You should have received a copy of the GNU Lesser General Public License
 #    along with JMOO.  If not, see < http: // www.gnu.org / licenses / >.
 
-"""Problem base module for defining commonly used methods across subclasses of Problem."""
+"""Base module for storing Base Classes defining their abstract requirements and
+providing common methods."""
 
+import logging
 import random
-from FriendlyErrors import NullInputError, DecisionOutOfBoundsError, \
-    DecisionVariableStructureError, ObjectiveNotEvaluatedError, ObjectiveStructureError, \
-    ImproperInputError
+import sys
 
+class Algorithm:
+    """Base class for defining Algorithms for search problems."""
+
+    NAME = "UnnamedAlgorithm"
+
+    def __init__(self, problem, stat_tracker, settings):
+        self._problem = problem
+        self._stat_tracker = stat_tracker
+        self._settings = settings
+        self._problem.num_evaluations = 0
+
+    def evolve(self):
+        pass
+
+class Mutator:
+    """Base class for defining mutators: a method of perturbing individuals of a
+    population."""
+
+    def mutate(self):
+        raise NotImplementedError()
+
+class Populator:
+    """Base class for populators, used in generating initial populations for algorithms."""
+
+    def populate(self):
+        raise NotImplementedError()
 
 class Problem:
     """The Problem base class to extend when creating new problems for search.  Every
@@ -99,6 +125,12 @@ class Problem:
         return [random.uniform(decision_variable.lower_bound, decision_variable.upper_bound)
                 for decision_variable in self.decision_variables]  # pylint: disable=E1133
 
+    def evaluate(self, input = None):
+        raise NotImplementedError()
+
+    def evaluate_constraints(self, input = None):
+        raise NotImplementedError()
+
     def initialize(self, decision_input=None):
         """Disibutes decision values into the value slot of decision variables of the problem
         so that it can be more readily accessed by evaluators of those decisions.
@@ -121,6 +153,7 @@ class Problem:
             DecisionOutOfBoundsError: "A *decision_input* was out of bounds in method
             *Problem.initialize*.
         """
+
         if not decision_input:
             raise NullInputError("Provided *decision_input* to method *Problem.initialize* must \
                 exist.")
@@ -163,3 +196,36 @@ class Problem:
         except AttributeError:
             raise ObjectiveNotEvaluatedError("Cannot get value of an objective because the \
                 objective has not yet been evaluated")
+
+class Reproducer:
+    """Base class for defining a Reproducer used in algorithms."""
+    def reproduce(self):
+        raise NotImplementedError()
+
+class ReturnPolicy:
+    """Base class for defining a Return Policy for electing which 
+    generation and stat to return as result of running algorithm."""
+
+    def elect_generation(self, stat_tracker):
+        raise NotImplementedError()
+
+class Selector:
+    """Base class for defining a Selector."""
+    
+    def select(self):
+        raise NotImplementedError()
+
+class Stat:
+    """Base class for defining Stats for search problems."""
+
+    STAT_NAME = "UnnamedStat"
+    FORMATTER = "%10.3f"
+
+    def collect(self):
+        raise NotImplementedError()
+
+class StoppingCriteria:
+    """Base class for defining stopping criteria for algorithms."""
+
+    def is_satisfied(self):
+        raise NotImplementedError()

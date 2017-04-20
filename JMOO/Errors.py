@@ -13,7 +13,7 @@
 #    You should have received a copy of the GNU Lesser General Public License
 #    along with JMOO.  If not, see < http: // www.gnu.org / licenses / >.
 
-"""This module defines a collection of friendly errors that can be raised."""
+"""Errors module for defining more-helpful friendly errors that may arise."""
 
 class NullInputError(Exception):
     """Friendly exception for when a required non-null input was given as null.

@@ -14,7 +14,7 @@
 #    along with JMOO.  If not, see < http: // www.gnu.org / licenses / >.
 
 from Population.Utils import get_local_frontier
-from Stat import Stat
+from Base import Stat
 import numpy as np
 
 class Diversity(Stat):

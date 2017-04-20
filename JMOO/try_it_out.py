@@ -1,29 +1,41 @@
 # -*- coding: utf-8 -*-
 
-import random
-from Problems.Schaffer import Schaffer
-from Problems.Constrex import Constrex
+import JmooExperiment
+from Algorithms.Common import SGA, Random
+from Algorithms.NSGAII import NSGAII
 from Problems.Fonseca import Fonseca
-from StatTracker import StatTracker
-from Stats.Common import Median, Mean, Evaluations
+from Problems.Constrex import Constrex
+from Stats.Common import Evaluations, Mean, Median, Population
 from Stats.MeasuresOfSpread import Diversity
+from Criteria.Common import MaxGenerationsCriteria
+from Population.Utils import get_local_frontier
+J = JmooExperiment.JmooExperiment()
+J.set_algorithms(NSGAII)#SGA, Random)
+J.set_problems(Fonseca(num_variables=2))
+J.set_stats_to_track(Population, Median, Mean, Evaluations, Diversity)
+J.set_settings({"Population Size": 100, "Stopping Criteria": MaxGenerationsCriteria(10),"Print Stats": True})
+run_stats = J.run()
 
 
-random.seed(1)
+"""
+population = get_local_frontier(run_stats["NSGAII"]["Fonseca"][0])
+import seaborn  as sns
+import pandas as pd
+import matplotlib.pyplot as plt
 
+sns.set_context("notebook", font_scale=1.1)
+sns.set_style("ticks")
 
-import core
-from Algorithms.Random_Evolution import Random_Evolution
+df = pd.DataFrame({'x': [ind.fitness[0] for ind in population],
+                    'y': [ind.fitness[1] for ind in population]})
+sns.lmplot('x', 'y',
+            data=df,
+            fit_reg=False
+            )
 
-
-
-#Random_Evolution(None, Constrex(), StatTracker([Median, Mean, Evaluations])).evolve()
-
-
-
-J = core.Jmoo()
-J.set_algorithms(Random_Evolution)
-J.set_problems(Fonseca(num_variables=10), Constrex, Schaffer())
-J.set_stats_to_track(Median, Mean, Evaluations, Diversity)
-J.run()
+plt.title('Fonseca - NSGAII')
+plt.xlabel('f1')
+plt.ylabel('f2')
+plt.show()
+"""
     

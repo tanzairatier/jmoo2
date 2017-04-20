@@ -13,10 +13,16 @@
 #    You should have received a copy of the GNU Lesser General Public License
 #    along with JMOO.  If not, see < http: // www.gnu.org / licenses / >.
 
-"""Base class for defining Algorithms.  This module is a stub for holding common
-methods that can be called from instances of its subclasses."""
+"""Common return policies.  Use these to select which generation is returned as a result
+of running an algorithm."""
 
-class Algorithm:
-    """Base class for defining Algorithms for search problems."""
+import random
+from Base import ReturnPolicy
+
+class ReturnLastGeneration(ReturnPolicy):
+    """Return the final generation's population."""
     def __init__(self):
         pass
+
+    def elect_generation(self, stat_tracker):
+        return stat_tracker.get_latest_stat("Population")

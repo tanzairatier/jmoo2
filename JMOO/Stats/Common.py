@@ -16,8 +16,20 @@
 """Common stats for MOEAs to collect at the end of each generation."""
 
 import numpy as np
-from Stat import Stat
+from Base import Stat
 
+class Population(Stat):
+    """The entire population of each generation.  Use this stat in conjunction with
+    Return policies."""
+
+    STAT_NAME = "Population"
+    FORMATTER = "DND" #do not display
+
+    def __init__(self, population):
+        self._population = population
+
+    def collect(self):
+        return self._population
 
 class Evaluations(Stat):
     """The number of evaluations to a problem.
@@ -26,6 +38,9 @@ class Evaluations(Stat):
     
     STAT_NAME = "Evaluations"
     FORMATTER = "%d"
+
+    def collect(self):
+        pass
 
 class Mean(Stat):
     """The mean on each objective of a population."""

@@ -1,8 +1,7 @@
 from math import exp, sqrt
-from Problem import Problem
-from Decision import DecisionVariable
-from Objective import Objective
-from FriendlyErrors import ImproperInputError
+from Base import Problem
+from Core import DecisionVariable, Objective
+from Errors import ImproperInputError
 
 class Fonseca(Problem):
     """Fonseca and Fleming's problem

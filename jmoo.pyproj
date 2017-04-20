@@ -22,33 +22,43 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include=".vscode\.ropeproject\config.py" />
-    <Compile Include="jmoo\Algorithm.py" />
-    <Compile Include="jmoo\Algorithms\Random_Evolution.py" />
+    <Compile Include="jmoo\Algorithms\Common.py" />
+    <Compile Include="jmoo\Algorithms\NSGAII.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="jmoo\Errors.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="jmoo\JmooExperiment.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="jmoo\Algorithms\__init__.py" />
-    <Compile Include="jmoo\core.py" />
-    <Compile Include="jmoo\Decision.py" />
-    <Compile Include="jmoo\FriendlyErrors.py" />
-    <Compile Include="jmoo\Individual.py" />
-    <Compile Include="jmoo\Objective.py" />
-    <Compile Include="jmoo\Perturbation\Mutation.py" />
+    <Compile Include="jmoo\Base.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="jmoo\Core.py" />
+    <Compile Include="jmoo\Perturbation\Common.py" />
     <Compile Include="jmoo\Perturbation\__init__.py" />
+    <Compile Include="jmoo\Population\Common.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="jmoo\Population\Utils.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jmoo\Population\Random_Population.py" />
     <Compile Include="jmoo\Population\__init__.py" />
-    <Compile Include="jmoo\Problem.py" />
     <Compile Include="jmoo\Problems\Constrex.py" />
     <Compile Include="jmoo\Problems\Fonseca.py" />
     <Compile Include="jmoo\Problems\Schaffer.py" />
     <Compile Include="jmoo\Problems\__init__.py" />
-    <Compile Include="jmoo\Reproduction\Crossover.py" />
+    <Compile Include="jmoo\Reproduction\Common.py" />
     <Compile Include="jmoo\Reproduction\__init__.py" />
-    <Compile Include="jmoo\Selection\Random_Selection.py" />
-    <Compile Include="jmoo\Selection\Strength.py" />
-    <Compile Include="jmoo\Selection\Tournament.py" />
+    <Compile Include="jmoo\ReturnPolicy\Common.py" />
+    <Compile Include="jmoo\ReturnPolicy\__init__.py" />
+    <Compile Include="jmoo\Selection\Common.py" />
+    <Compile Include="jmoo\Selection\NSGAII.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="jmoo\Selection\__init__.py" />
-    <Compile Include="jmoo\Stat.py" />
     <Compile Include="jmoo\Stats\Common.py">
       <SubType>Code</SubType>
     </Compile>
@@ -56,9 +66,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="jmoo\Stats\__init__.py" />
-    <Compile Include="jmoo\StatTracker.py" />
-    <Compile Include="jmoo\StoppingCriteria\Criteria.py" />
-    <Compile Include="jmoo\StoppingCriteria\__init__.py" />
+    <Compile Include="jmoo\Criteria\Common.py" />
+    <Compile Include="jmoo\Criteria\__init__.py" />
     <Compile Include="jmoo\tests\context.py" />
     <Compile Include="jmoo\tests\test_criteria.py" />
     <Compile Include="jmoo\tests\test_crossovers.py" />
@@ -71,8 +80,6 @@
     <Compile Include="jmoo\tests\test_stats.py" />
     <Compile Include="jmoo\tests\__init__.py" />
     <Compile Include="jmoo\try_it_out.py" />
-    <Compile Include="jmoo\utility_functions.py" />
-    <Compile Include="jmoo\Variable.py" />
     <Compile Include="jmoo\__init__.py" />
     <Compile Include="__init__.py" />
   </ItemGroup>
@@ -81,13 +88,14 @@
     <Folder Include=".vscode\.ropeproject" />
     <Folder Include="jmoo" />
     <Folder Include="jmoo\Algorithms" />
+    <Folder Include="jmoo\ReturnPolicy\" />
     <Folder Include="jmoo\Perturbation" />
     <Folder Include="jmoo\Population" />
     <Folder Include="jmoo\Problems" />
     <Folder Include="jmoo\Reproduction" />
     <Folder Include="jmoo\Selection" />
     <Folder Include="jmoo\Stats" />
-    <Folder Include="jmoo\StoppingCriteria" />
+    <Folder Include="jmoo\Criteria\" />
     <Folder Include="jmoo\tests" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
