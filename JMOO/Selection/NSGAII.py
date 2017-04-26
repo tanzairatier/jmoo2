@@ -15,10 +15,10 @@
 
 """The selector for NSGA-II."""
 
-from Base import Selector
+from ..Base import Selector
 from collections import defaultdict
 from itertools import chain
-from Errors import ImproperInputError
+from ..Errors import ImproperInputError
 
 def do_NSGAII_select(num_to_select, population):
     """Selection scheme for identifying the best individuals in the population."""

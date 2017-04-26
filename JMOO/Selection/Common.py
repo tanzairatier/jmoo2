@@ -16,9 +16,9 @@
 """Common selectors.  Use these to select best candidates from a pool."""
 
 import random
-from Base import Selector
+from ..Base import Selector
 
-class RandomSelection(Selector):
+class RandomSelector(Selector):
     """given a population of candidates, down-select the pool to a fixed number"""
     def __init__(self, population_size_desired, population):
         self._population_size_desired = population_size_desired

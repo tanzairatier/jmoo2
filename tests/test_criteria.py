@@ -1,8 +1,8 @@
 from .context import *
 import unittest
 import random
-from StoppingCriteria.Criteria import MaxGenerationsCriteria
-from Problems.Fonseca import Fonseca
+from jmoo.Criteria.Common import MaxGenerationsCriteria
+from jmoo.Problems.Fonseca import Fonseca
 
 class TestCriteria(unittest.TestCase):
     def setUp(self):

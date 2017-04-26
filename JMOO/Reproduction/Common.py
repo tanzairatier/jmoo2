@@ -16,8 +16,8 @@
 """Common reproducers.  Use these to expand and create more individuals in algorithms."""
 
 import random
-from Base import Reproducer
-from Core import Individual
+from ..Base import Reproducer
+from ..Core import Individual
 
 class SimpleCrossover(Reproducer):
     """Generates an equal-size population of offspring by taking sequential pairs of parents

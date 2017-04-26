@@ -17,7 +17,7 @@
 of running an algorithm."""
 
 import random
-from Base import ReturnPolicy
+from ..Base import ReturnPolicy
 
 class ReturnLastGeneration(ReturnPolicy):
     """Return the final generation's population."""
@@ -26,3 +26,19 @@ class ReturnLastGeneration(ReturnPolicy):
 
     def elect_generation(self, stat_tracker):
         return stat_tracker.get_latest_stat("Population")
+
+class ReturnEveryGeneration(ReturnPolicy):
+    """Return the final generation's population."""
+    def __init__(self):
+        pass
+
+    def elect_generation(self, stat_tracker):
+        return stat_tracker.get_every("Population")
+
+class ReturnEverything(ReturnPolicy):
+    """Return the final generation's population."""
+    def __init__(self):
+        pass
+
+    def elect_generation(self, stat_tracker):
+        return stat_tracker.get_everything()

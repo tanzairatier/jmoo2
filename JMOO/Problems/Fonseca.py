@@ -1,7 +1,7 @@
 from math import exp, sqrt
-from Base import Problem
-from Core import DecisionVariable, Objective
-from Errors import ImproperInputError
+from jmoo.Base import Problem
+from jmoo.Core import DecisionVariable, Objective
+from jmoo.Errors import ImproperInputError
 
 class Fonseca(Problem):
     """Fonseca and Fleming's problem

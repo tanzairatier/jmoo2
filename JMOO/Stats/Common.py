@@ -16,7 +16,7 @@
 """Common stats for MOEAs to collect at the end of each generation."""
 
 import numpy as np
-from Base import Stat
+from ..Base import Stat
 
 class Population(Stat):
     """The entire population of each generation.  Use this stat in conjunction with

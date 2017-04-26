@@ -15,8 +15,8 @@
 
 """Common populators.  Use these to get initial populations for algorithms."""
 
-from Base import Populator
-from Core import Decision, Individual
+from ..Base import Populator
+from ..Core import Decision, Individual
 
 class RandomPopulator(Populator):
     """The Random Populator.  Generates a population of individuals that

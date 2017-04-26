@@ -19,7 +19,7 @@ import logging
 import math
 import random
 import sys
-from Errors import ImproperInputError
+from .Errors import ImproperInputError
 
 class ControlledExecution:
     def __enter__(self):
@@ -241,6 +241,12 @@ class StatTracker:
         """ Returns the requested stat's last collected data point.
         """
         return self._stat_containers[stat_name][-1]
+
+    def get_every(self, stat_name):
+        return self._stat_containers[stat_name]
+
+    def get_everything(self):
+        return self._stat_containers
 
     def pretty_print_stats(self):
         printables = []

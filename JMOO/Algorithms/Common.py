@@ -15,12 +15,12 @@
 
 """Common algorithms for search problems."""
 
-from Base import Algorithm
-from Perturbation.Common import SimpleMutation
-from Population.Common import RandomPopulator
-from Reproduction.Common import SimpleCrossover
-from Selection.Common import RandomSelection
-from Criteria.Common import MaxGenerationsCriteria
+from ..Base import Algorithm
+from ..Perturbation.Common import SimpleMutation
+from ..Population.Common import RandomPopulator
+from ..Reproduction.Common import SimpleCrossover
+from ..Selection.Common import RandomSelector
+from ..Criteria.Common import MaxGenerationsCriteria
 
 class SGA(Algorithm):
     """The Simple Genetic Algorithm.  Beginning with a random population, randomly select
@@ -43,7 +43,7 @@ class SGA(Algorithm):
         self._stat_tracker.collect_stats(population)
 
         while not self._stopping_criteria.is_satisfied(self._stat_tracker):
-            sub_pop = RandomSelection(50, population).select()
+            sub_pop = RandomSelector(50, population).select()
             population = SimpleCrossover(self._problem, sub_pop, 0.80).reproduce()
             population = SimpleMutation(0.08).mutate(population)
             

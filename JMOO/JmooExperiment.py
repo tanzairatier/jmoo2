@@ -15,11 +15,12 @@
 
 """Core Jmoo Module for establishing MOO search scenarios."""
 
-from Base import Algorithm, Problem, Stat
-from Core import ControlledExecution, StatTracker
-from Errors import ImproperInputError, DuplicateStatError, NonUniqueStatError
-from Criteria.Common import MaxGenerationsCriteria
-from ReturnPolicy.Common import ReturnLastGeneration
+from .Base import Algorithm, StoppingCriteria, Problem, ReturnPolicy, Stat
+from .Core import ControlledExecution, StatTracker
+from .Errors import ImproperInputError, DuplicateStatError, NonUniqueStatError
+from .Criteria.Common import MaxGenerationsCriteria
+from .ReturnPolicy.Common import ReturnLastGeneration
+import random
 import _thread
 import logging
 
@@ -39,16 +40,14 @@ class JmooExperiment():
     DEFAULT_SETTINGS = {"Population Size": 100,
                                 "Print Stats": True,
                                 "Stopping Criteria": MaxGenerationsCriteria(50),
-                                "Return Policy": ReturnLastGeneration()
+                                "Return Policy": ReturnLastGeneration(),
+                                "Random Seed": None,
+                                "Number of Repeats": 2
                         }
 
     def __init__(self):
         """Constructor."""
 
-        self._population_size = JmooExperiment.DEFAULT_POPULATION_SIZE
-        self._generation_limit = JmooExperiment.DEFAULT_GENERATION_LIMIT
-        self._number_of_repeats = JmooExperiment.DEFAULT_NUMBER_OF_REPEATS
-        self._random_seed = JmooExperiment.DEFAULT_RANDOM_SEED
         self._settings = JmooExperiment.DEFAULT_SETTINGS
 
         #List of algorithms to run on each problem
@@ -164,6 +163,26 @@ class JmooExperiment():
         if isinstance(settings, dict):
             self._settings.update(settings)
 
+        if not isinstance(self._settings["Number of Repeats"], int):
+            raise ImproperInputError("Number of repeats must be an integer.")
+
+        if not isinstance(self._settings["Population Size"], int):
+            raise ImproperInputError("Population Size must be an integer.")
+
+        if self._settings["Random Seed"] is not None and not isinstance(self._settings["Random Seed"], int):
+            raise ImproperInputError("Random Seed must be an integer.")
+
+        random.seed(self._settings["Random Seed"])
+
+        if not isinstance(self._settings["Print Stats"], bool):
+            raise ImproperInputError("Print Stats must be a boolean.")
+
+        if not isinstance(self._settings["Stopping Criteria"], StoppingCriteria):
+            raise ImproperInputError("Stopping Criteria must be an instance of StoppingCriteria.")
+
+        if not isinstance(self._settings["Return Policy"], ReturnPolicy):
+            raise ImproperInputError("Return Policy must be an instance of ReturnPolicy.")
+
     def run(self):
         """Core JMOO runner to execute MOO problem solving plan."""
 
@@ -173,72 +192,7 @@ class JmooExperiment():
                 run_stats[algorithm.NAME] = {}
                 for problem in self._problems:
                     run_stats[algorithm.NAME][problem.NAME] = []
-                    run_stats[algorithm.NAME][problem.NAME].append(algorithm(problem, StatTracker(self._stats_to_track, problem, algorithm), self._settings).evolve())
+                    for repeat in range(self._settings["Number of Repeats"]):
+                        run_stats[algorithm.NAME][problem.NAME].append(algorithm(problem, StatTracker(self._stats_to_track, problem, algorithm), self._settings).evolve())
             logging.info('- Run of algorithms on problems occurred successfully.')
             return run_stats
-
-    @property
-    def population_size(self):
-        """Gets the opulation size: the number of candidate solutions within each population."""
-
-        with ControlledExecution():
-            return self._population_size
-
-    @population_size.setter
-    def population_size(self, population_size):
-        """Sets the population size."""
-
-        with ControlledExecution():
-            if not isinstance(population_size, int):
-                raise ImproperInputError("Population size must be an integer.")
-            self._population_size = population_size
-
-    @property
-    def generation_limit(self):
-        """Gets the generation limit: the maximum number of generations that an EA searcher will run
-        for before stopping."""
-
-        with ControlledExecution():
-            return self._generation_limit
-
-    @generation_limit.setter
-    def generation_limit(self, num_generations):
-        """Sets the generational limit."""
-
-        with ControlledExecution():
-            if not isinstance(num_generations, int):
-                raise ImproperInputError("Number of generations must be an integer.")
-            self._generation_limit = num_generations
-
-    @property
-    def number_of_repeats(self):
-        """Gets the number of repeats: the number of times to repeat the algorithm for statistical
-        consideration."""
-        
-        with ControlledExecution():
-            return self._number_of_repeats
-
-    @number_of_repeats.setter
-    def number_of_repeats(self, num_repeats):
-        """Sets the number of repeats for the algorithm to run on each problem."""
-
-        with ControlledExecution():
-            if not isinstance(num_repeats, int):
-                raise ImproperInputError("Number of repeats must be an integer.")
-            self._number_of_repeats = num_repeats
-
-    @property
-    def random_seed(self):
-        """Gets the random seed: the seed to propagate throughout the system for testing
-        purposes."""
-        with ControlledExecution():
-            return self._random_seed
-
-    @random_seed.setter
-    def random_seed(self, seed):
-        """Sets the Random Seed."""
-        
-        with ControlledExecution():
-            if not isinstance(seed, int):
-                raise ImproperInputError("Random seed must be an integer.")
-            self._random_seed = seed

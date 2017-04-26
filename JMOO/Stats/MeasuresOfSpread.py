@@ -13,8 +13,8 @@
 #    You should have received a copy of the GNU Lesser General Public License
 #    along with JMOO.  If not, see < http: // www.gnu.org / licenses / >.
 
-from Population.Utils import get_local_frontier
-from Base import Stat
+from ..Population.Utils import get_local_frontier
+from ..Base import Stat
 import numpy as np
 
 class Diversity(Stat):

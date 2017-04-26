@@ -1,8 +1,8 @@
 from .context import *
 import unittest
 import random
-from Population.Random_Population import Random_Populator
-from Problems.Schaffer import Schaffer
+from jmoo.Population.Common import RandomPopulator
+from jmoo.Problems.Schaffer import Schaffer
 
 class TestPopulation(unittest.TestCase):
     def setUp(self):
@@ -15,7 +15,7 @@ class TestPopulation(unittest.TestCase):
         
     def test_random_populator(self):
         """Ensure that random population works properly"""
-        random_populator = Random_Populator(self._problem, self._population_size)
+        random_populator = RandomPopulator(self._problem, self._population_size)
         self._population = random_populator.populate()
         self.assertEqual(len(self._population), self._population_size)
         for individual in self._population:

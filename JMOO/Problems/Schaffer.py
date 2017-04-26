@@ -1,6 +1,6 @@
-from Base import Problem
-from Core import DecisionVariable, Objective
-from Errors import ImproperInputError
+from ..Base import Problem
+from ..Core import DecisionVariable, Objective
+from ..Errors import ImproperInputError
 
 class Schaffer(Problem):
     """Schaffer problem N1.

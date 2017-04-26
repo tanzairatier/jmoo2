@@ -1,14 +1,14 @@
 from .context import *
 import unittest
 import random
-from Individual import Individual
-from Problems.Fonseca import Fonseca
-from Population import Random_Population
+from jmoo.Core import Individual
+from jmoo.Problems.Fonseca import Fonseca
+from jmoo.Population.Common import RandomPopulator
 
 class TestParameterSettings(unittest.TestCase):
     def setUp(self):
         self.problem = Fonseca(num_variables = 2)
-        self.population = Random_Population.Random_Populator(self.problem, population_size = 2).populate()
+        self.population = RandomPopulator(self.problem, population_size = 2).populate()
 
     def tearDown(self):
         pass

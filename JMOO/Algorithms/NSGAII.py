@@ -1,8 +1,8 @@
-from Base import Algorithm
-from Perturbation.Common import SimpleMutation
-from Population.Common import RandomPopulator
-from Selection.NSGAII import NSGAIISelector
-from Reproduction.Common import SimpleCrossover
+from ..Base import Algorithm
+from ..Perturbation.Common import SimpleMutation
+from ..Population.Common import RandomPopulator
+from ..Selection.NSGAII import NSGAIISelector
+from ..Reproduction.Common import SimpleCrossover
 
 class NSGAII(Algorithm):
     """NSGA-II Algorithm."""

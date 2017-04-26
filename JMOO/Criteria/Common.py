@@ -15,8 +15,8 @@
 
 """Common stopping criteria.  Use these to tell an algorithm when to stop."""
 
-from Base import StoppingCriteria
-from Errors import ImproperInputError, InvalidSetupError
+from ..Base import StoppingCriteria
+from ..Errors import ImproperInputError, InvalidSetupError
 
 class MaxGenerationsCriteria(StoppingCriteria):
     """A stopping criteria that claims convergence after a maximum number of generations have been achieved."""

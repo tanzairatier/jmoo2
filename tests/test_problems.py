@@ -1,8 +1,8 @@
 from .context import *
-from Problems.Fonseca import Fonseca
-from Problems.Constrex import Constrex
-from Problems.Schaffer import Schaffer
-from Friendly_Errors import DecisionOutOfBoundsError, NullInputError, ImproperInputError
+from jmoo.Problems.Fonseca import Fonseca
+from jmoo.Problems.Constrex import Constrex
+from jmoo.Problems.Schaffer import Schaffer
+from jmoo.Errors import DecisionOutOfBoundsError, NullInputError, ImproperInputError
 import unittest
 
 

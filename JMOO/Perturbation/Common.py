@@ -17,8 +17,8 @@
 that the changes would luck into finding good solutions."""
 
 import random
-from Base import Mutator
-from Core import Decision, Individual
+from ..Base import Mutator
+from ..Core import Decision, Individual
 
 class SimpleMutation(Mutator):
     """Simple mutation which randomly chooses an individual of a population to mutate

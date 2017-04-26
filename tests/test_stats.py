@@ -14,13 +14,7 @@ class TestStatCollection(unittest.TestCase):
 
     def tearDown(self):
         pass
-        
-    def test_individual_evaluation(self):
-        """If we evaluate an individual, check that its fitness and weighted fitness are correct."""
-        median_stat = Median(self.population)
-        medians = median_stat.collect()
-        self.assertEquals(round(medians[0],3), 0.769) 
-        self.assertEquals(round(medians[1],3), 0.792)
+       
 
 
 if __name__ == '__main__':

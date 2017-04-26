@@ -19,6 +19,7 @@ providing common methods."""
 import logging
 import random
 import sys
+from .Errors import ObjectiveNotEvaluatedError, NullInputError, ImproperInputError, DecisionOutOfBoundsError
 
 class Algorithm:
     """Base class for defining Algorithms for search problems."""

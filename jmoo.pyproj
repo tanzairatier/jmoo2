@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3686f71e-42a9-43e1-837a-f699ec83036f}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>jmoo\try_it_out.py</StartupFile>
+    <StartupFile>try_it_out.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -68,20 +68,19 @@
     <Compile Include="jmoo\Stats\__init__.py" />
     <Compile Include="jmoo\Criteria\Common.py" />
     <Compile Include="jmoo\Criteria\__init__.py" />
-    <Compile Include="jmoo\tests\context.py" />
-    <Compile Include="jmoo\tests\test_criteria.py" />
-    <Compile Include="jmoo\tests\test_crossovers.py" />
-    <Compile Include="jmoo\tests\test_individual.py" />
-    <Compile Include="jmoo\tests\test_jmoo_parameter_settings.py" />
-    <Compile Include="jmoo\tests\test_mutators.py" />
-    <Compile Include="jmoo\tests\test_populators.py" />
-    <Compile Include="jmoo\tests\test_problems.py" />
-    <Compile Include="jmoo\tests\test_selectors.py" />
-    <Compile Include="jmoo\tests\test_stats.py" />
-    <Compile Include="jmoo\tests\__init__.py" />
-    <Compile Include="jmoo\try_it_out.py" />
+    <Compile Include="tests\context.py" />
+    <Compile Include="tests\test_criteria.py" />
+    <Compile Include="tests\test_crossovers.py" />
+    <Compile Include="tests\test_individual.py" />
+    <Compile Include="tests\test_jmoo_parameter_settings.py" />
+    <Compile Include="tests\test_mutators.py" />
+    <Compile Include="tests\test_populators.py" />
+    <Compile Include="tests\test_problems.py" />
+    <Compile Include="tests\test_selectors.py" />
+    <Compile Include="tests\test_stats.py" />
+    <Compile Include="tests\__init__.py" />
+    <Compile Include="try_it_out.py" />
     <Compile Include="jmoo\__init__.py" />
-    <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".vscode\" />
@@ -96,7 +95,7 @@
     <Folder Include="jmoo\Selection" />
     <Folder Include="jmoo\Stats" />
     <Folder Include="jmoo\Criteria\" />
-    <Folder Include="jmoo\tests" />
+    <Folder Include="tests\" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
