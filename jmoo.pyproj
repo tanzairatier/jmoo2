@@ -37,6 +37,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="jmoo\Core.py" />
+    <Compile Include="jmoo\JmooTools.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="jmoo\Perturbation\Common.py" />
     <Compile Include="jmoo\Perturbation\__init__.py" />
     <Compile Include="jmoo\Population\Common.py">

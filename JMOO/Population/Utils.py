@@ -57,4 +57,6 @@ def get_local_frontier(population):
         if not is_dominated and not has_twin:
             local_frontier.append(individual)
 
+    #Sort
+    local_frontier.sort()
     return local_frontier

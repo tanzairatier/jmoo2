@@ -159,6 +159,18 @@ class Individual:
     def __eq__(self, other):
         return self.fitness == other.fitness
 
+    def __lt__(self, other):
+        return self.fitness < other.fitness
+
+    def __gt__(self, other):
+        return not self <= other
+
+    def __le__(self, other):
+        return self < other or self == other
+
+    def __ge__(self, other):
+        return not self < other
+
     def __str__(self):
         return "[" + ",".join([str(decision) for decision in self._decisions]) + "]"
 

@@ -3,10 +3,14 @@
 from jmoo.JmooExperiment import JmooExperiment
 from jmoo.Algorithms.NSGAII import NSGAII
 from jmoo.Problems.Constrex import Constrex
+from jmoo.Problems.Fonseca import Fonseca
 from jmoo.Stats.Common import Evaluations, Mean, Median, Population
 from jmoo.Criteria.Common import MaxGenerationsCriteria
 from jmoo.ReturnPolicy.Common import ReturnEverything, ReturnEveryGeneration
 
+from jmoo.JmooTools import JmooParetoFrontierGenerator
+
+"""
 J = JmooExperiment()
 J.set_algorithms(NSGAII)
 J.set_problems(Constrex)
@@ -19,7 +23,9 @@ J.set_settings({"Population Size": 100,
                 "Return Policy": ReturnEveryGeneration()})
 
 experiment_results = J.run()
+"""
 
+jpfg = JmooParetoFrontierGenerator(Fonseca, NSGAII)
 
 
 

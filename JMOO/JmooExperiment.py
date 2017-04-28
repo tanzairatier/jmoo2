@@ -169,6 +169,9 @@ class JmooExperiment():
         if not isinstance(self._settings["Population Size"], int):
             raise ImproperInputError("Population Size must be an integer.")
 
+        if isinstance(self._settings["Population Size"], int) and self._settings["Population Size"] <= 0:
+            raise ImproperInputError("Population size must be a positive integer.")
+
         if self._settings["Random Seed"] is not None and not isinstance(self._settings["Random Seed"], int):
             raise ImproperInputError("Random Seed must be an integer.")
 
